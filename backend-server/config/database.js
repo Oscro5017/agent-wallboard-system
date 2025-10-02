@@ -7,7 +7,7 @@ const SQLITE_DB_PATH = process.env.SQLITE_DB_PATH || '../database/sqlite/wallboa
 
 function initSQLite() {
   return new Promise((resolve, reject) => {
-    const dbPath = path.resolve(__dirname, SQLITE_DB_PATH);
+    const dbPath = path.resolve(process.cwd(), SQLITE_DB_PATH);
     const db = new sqlite3.Database(dbPath, (err) => {
       if (err) {
         console.error('❌ SQLite connection error:', err);
