@@ -96,9 +96,9 @@
 }
 
 .status-buttons {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  display: flex;       /* ใช้ flex แทน grid */
+  flex-direction: row; /* แถวเดียวกัน */
+  gap: 12px;           /* ช่องว่างระหว่างปุ่ม */
   margin-top: 12px;
 }
 
@@ -107,13 +107,14 @@
   border: none;
   border-radius: 10px;
   color: white;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  flex-direction: row;
   align-items: center;
   gap: 4px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 80px;
 }
 
 .status-btn:hover:not(:disabled) {
