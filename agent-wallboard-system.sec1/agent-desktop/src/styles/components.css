@@ -96,10 +96,13 @@
 }
 
 .status-buttons {
-  display: flex;       /* ใช้ flex แทน grid */
-  flex-direction: row; /* แถวเดียวกัน */
-  gap: 12px;           /* ช่องว่างระหว่างปุ่ม */
+  position: relative;      /* ✅ สำคัญ: ให้ indicator อ้างอิงตำแหน่งตรงนี้ */
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
   margin-top: 12px;
+  padding-bottom: 10px;    /* ✅ เว้นพื้นที่ด้านล่างให้ขีดโผล่ */
+  flex-wrap: nowrap;       /* จะให้ตัดบรรทัดได้ค่อยเปลี่ยนเป็น wrap */
 }
 
 .status-btn {
@@ -149,6 +152,17 @@
   color: #856404;
   font-size: 12px;
   text-align: center;
+}
+
+/* ✅ ขีดเลื่อนใต้ปุ่ม */
+.status-indicator {
+  position: absolute;
+  bottom: 0;               /* ชิดล่างของ .status-buttons */
+  height: 5px;
+  border-radius: 10px;
+  transition: left 220ms ease, width 220ms ease, background-color 180ms ease;
+  will-change: left, width;
+  z-index: 1;
 }
 
 /* Message Panel */
@@ -396,3 +410,20 @@
     gap: 4px;
   }
 }
+/* Keep only component-specific bits; App.css holds the shell */
+
+
+/* Login */
+.login-title { font-weight: 800; font-size: 18px; }
+.help-text { font-size: 12px; color: var(--muted); }
+
+
+/* Message panel */
+.message-text { line-height: 1.45; }
+.message-actions { display: flex; gap: 8px; }
+.icon-btn { appearance: none; border: 0; background: rgba(255,255,255,.06); padding: 6px 8px; border-radius: 10px; cursor: pointer; }
+.icon-btn[aria-pressed="true"] { outline: 3px solid var(--ring); }
+
+
+/* Small badges */
+.badge { display: inline-flex; align-items: center; gap: 6px; padding: 2px 8px; border-radius: 999px; font-size: 12px; background: rgba(255,255,255,.06); }

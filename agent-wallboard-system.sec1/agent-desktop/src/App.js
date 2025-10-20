@@ -319,15 +319,6 @@ function App() {
 
   return (
     <div className="app">
-      {/* Connection Status Bar */}
-      <div className={`connection-status ${connectionStatus}`}>
-        <div className="status-indicator"></div>
-        <span>
-          {connectionStatus === 'connected' && 'Connected'}
-          {connectionStatus === 'disconnected' && 'Disconnected'}
-          {connectionStatus === 'error' && 'Connection Error'}
-        </span>
-      </div>
 
       {/* Error Banner */}
       {error && (
@@ -344,8 +335,20 @@ function App() {
         <LoginForm onLogin={handleLogin} />
       ) : (
         <div className="dashboard">
+
           <div className="dashboard-header">
             <AgentInfo agent={agent} status={status} />
+
+            <div className='status-and-logout-btn'>
+              <div className={`connection-status ${connectionStatus}`}>
+                <div className="status-indicator"></div>
+                <span>
+                  {connectionStatus === 'connected' && 'Connected'}
+                  {connectionStatus === 'disconnected' && 'Disconnected'}
+                  {connectionStatus === 'error' && 'Connection Error'}
+                </span>
+              </div>
+
             <button
               onClick={handleLogout}
               className="logout-btn"
@@ -353,6 +356,7 @@ function App() {
             >
               Logout
             </button>
+          </div>
           </div>
 
           <StatusPanel
