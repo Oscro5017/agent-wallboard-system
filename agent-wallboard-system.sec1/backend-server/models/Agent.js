@@ -33,7 +33,7 @@ class Agent {
           a.phone,
           a.hire_date,
           a.is_active,
-          t.team_name
+          t.teamName AS team_name
         FROM agents a
         LEFT JOIN teams t ON a.team_id = t.team_id
         WHERE a.agent_code = ? AND a.is_active = 1
@@ -114,7 +114,7 @@ class Agent {
           a.agent_name,
           a.team_id,
           a.role,
-          t.team_name
+          t.teamName AS team_name
         FROM agents a
         LEFT JOIN teams t ON a.team_id = t.team_id
         WHERE a.is_active = 1

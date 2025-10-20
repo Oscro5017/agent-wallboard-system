@@ -1,5 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const { login } = require('../controllers/authController');
 const router = express.Router();
 const Agent = require('../models/Agent');
 const { transformAgent, transformAgents } = require('../utils/transformers'); // เพิ่ม
@@ -10,6 +11,7 @@ const JWT_SECRET = process.env.JWT_SECRET || 'default-secret-change-me';
  * POST /api/auth/login
  * Agent/Supervisor login
  */
+
 router.post('/login', async (req, res) => {
   try {
     const { agentCode, supervisorCode } = req.body;
